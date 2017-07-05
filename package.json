@@ -1,0 +1,33 @@
+{
+  "name": "minispendee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "bundle:prod": "webpack -p --env=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Edgar000/minispendee.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "html-webpack-plugin": "^2.29.0",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router": "^4.1.1"
+  }
+}
