@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
-import {App} from './containers/App';
+import {App} from './containers/App/App';
 
 const renderWrapper = (Component) => {
     render(
@@ -15,7 +15,7 @@ const renderWrapper = (Component) => {
 renderWrapper(App);
 
 if (module.hot) {
-    module.hot.accept('./containers/App', () => {
+    module.hot.accept('./containers/App/App', () => {
         renderWrapper(App);
     });
 }
