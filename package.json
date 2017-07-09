@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "bundle:prod": "webpack -p --env=production"
+    "bundle": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -20,12 +20,22 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
+    "font-awesome-sass-loader": "^2.0.1",
     "html-webpack-plugin": "^2.29.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
     "react-hot-loader": "^3.0.0-beta.7",
-    "webpack": "^3.0.0",
+    "resolve-url-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.1.0",
     "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "react": "^15.6.1",
     "react-d3": "^0.4.0",
     "react-dom": "^15.6.1",

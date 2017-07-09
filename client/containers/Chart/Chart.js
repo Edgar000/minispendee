@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {LineChart} from 'react-d3';
+import './Chart.scss';
 
 export class Chart extends Component {
     state = {
@@ -15,16 +16,17 @@ export class Chart extends Component {
         const spendingsData = [{x: 0, y: 0}];
         this.state.spendings.reduce((previousValue, spending) => {
             let count = 1;
-            if (+spending.date !== previousValue.date) {
+            let dateNumber = +spending.date.substr(8);
+            if (dateNumber !== previousValue.date) {
                 spendingsData.push({
-                    x: +spending.date,
+                    x: dateNumber,
                     y: +spending.sum + previousValue.sum,
                 });
                 count += 1;
             } else {
                 spendingsData[count].y += +spending.sum;
             }
-            return {date: +spending.date, sum: +spending.sum + previousValue.sum};
+            return {date:dateNumber, sum: +spending.sum + previousValue.sum};
         }, {date: 0, sum: 0});
 
         const lineData = [
@@ -37,7 +39,21 @@ export class Chart extends Component {
         ];
 
         return (
-            <div>
+            <div className="chart">
+                <div className="chart_info">
+                    <Link to={'/' + this.props.match.params.name} className="chart_info_back">
+                        <i className="fa fa-arrow-left"/>
+                        <span>back to spendings</span>
+                    </Link>
+                    <div className="chart_info_name">
+                        <span>{this.props.match.params.name}</span>
+                    </div>
+                    <Link to="/" className="chart_info_home">
+                        <span>back to categories</span>
+                        <i className="fa fa-list-ul"/>
+                    </Link>
+                </div>
+
                 <LineChart
                     legend={true}
                     data={lineData}
@@ -53,14 +69,7 @@ export class Chart extends Component {
                     xAxisLabel="Date"
                     gridHorizontal={true}
                 />
-                <Link to={'/' + this.props.match.params.name}>
-                    <button type="button">Back</button>
-                </Link>
-                <Link to="/">
-                    <button type="button">Home</button>
-                </Link>
             </div>
-
         );
     }
 }

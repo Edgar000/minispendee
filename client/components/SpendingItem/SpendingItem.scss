@@ -1,0 +1,115 @@
+.spending-item {
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.spending-item_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.spending-item_info_description {
+  margin: 15px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+}
+
+.spending-item_info_edit-description {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+
+  input {
+    border: 2px solid gainsboro;
+    border-radius: 10px;
+    width: 10em;
+    outline: none;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 25px;
+  }
+
+  i {
+    display: block;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+}
+
+.spending-item_info_sum {
+  margin: 15px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 40px;
+  color: black;
+  cursor: pointer;
+}
+
+.spending-item_info_edit-sum {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+
+  input {
+    border: 2px solid gainsboro;
+    border-radius: 10px;
+    width: 5em;
+    outline: none;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 35px;
+  }
+
+  i {
+    display: block;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+}
+
+.spending-item_info_date {
+  margin: 15px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+}
+
+.spending-item_info_edit-date {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+
+  input {
+    border: 2px solid gainsboro;
+    border-radius: 10px;
+    outline: none;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 15px;
+  }
+
+  i {
+    display: block;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+}
+
+.spending-item_delete {
+  margin: 15px;
+  font-size: 15px;
+  cursor: pointer;
+}

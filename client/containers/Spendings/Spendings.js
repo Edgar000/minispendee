@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {SpendingItem} from '../../components/SpendingItem/SpendingItem';
+import './Spendings.scss';
 
 export class Spendings extends Component {
     state = {
@@ -8,7 +9,8 @@ export class Spendings extends Component {
         spendings: [],
         inputValue: '',
         inputSumValue: '',
-        inputDateValue: ''
+        inputDateValue: '',
+        isAdding: false
     };
 
     setInputValue = (event) => {
@@ -29,7 +31,18 @@ export class Spendings extends Component {
         });
     };
 
+    toggleAdding = () => {
+        this.setState({
+            inputValue: '',
+            inputSumValue: '',
+            inputDateValue: '',
+            isAdding: !this.state.isAdding
+
+        });
+    };
+
     addSpending = () => {
+        if (!this.state.inputValue || !this.state.inputSumValue || !this.state.inputDateValue) return;
         const spendings = this.state.spendings;
         spendings.push({
             id: Date.now(),
@@ -43,9 +56,9 @@ export class Spendings extends Component {
     editSpending = (spending, description, sum, date) => {
         const spendings = this.state.spendings;
         const i = spendings.indexOf(spending);
-        spendings[i].description = description;
-        spendings[i].sum = sum;
-        spendings[i].date = date;
+        if (description) spendings[i].description = description;
+        if (sum) spendings[i].sum = sum;
+        if (date) spendings[i].date = date;
         this.setState({spendings: spendings});
     };
 
@@ -85,24 +98,55 @@ export class Spendings extends Component {
         });
 
         return (
-            <div>
-                {this.props.match.params.name}
-                <Link to={'/' + this.props.match.params.name + '/chart'}>
-                    <button type="button">Chart</button>
-                </Link>
-                <div>
-                    description
-                    <input type="text" onChange={this.setInputValue}/>
-                    sum
-                    <input type="text" onChange={this.setInputSumValue}/>
-                    date
-                    <input type="text" onChange={this.setInputDateValue}/>
-                    <button type="button" onClick={this.addSpending}>Add Spending</button>
+            <div className="spendings">
+                <div className="spendings_info">
+                    <NavLink to="/" className="spendings_info_back">
+                        <i className="fa fa-arrow-left"/>
+                        <span>back to categories</span>
+                    </NavLink>
+                    <div className="spendings_info_name">
+                        <span>{this.props.match.params.name}</span>
+                    </div>
+                    <NavLink to={'/' + this.props.match.params.name + '/chart'} className="spendings_info_chart">
+                        <span>view chart</span>
+                        <i className="fa fa-line-chart"/>
+                    </NavLink>
                 </div>
-                {spendings}
-                <Link to="/">
-                    <button type="button">Back</button>
-                </Link>
+
+                <div className="spendings_add">
+                    {!this.state.isAdding ?
+                        <div className="spendings_add_inactive">
+                            <i className="fa fa-plus-square-o" onClick={this.toggleAdding}/>
+                            <span onClick={this.toggleAdding}>add new spending</span>
+                        </div> :
+                        <div className="spendings_add_active">
+                            <div>
+                                <span>description</span>
+                                <input type="text" onChange={this.setInputValue}/>
+                            </div>
+                            <div>
+                                <span>sum</span>
+                                <input type="number" onChange={this.setInputSumValue}/>
+                            </div>
+                            <div>
+                                <span>date</span>
+                                <input type="date" onChange={this.setInputDateValue}/>
+                            </div>
+                            <div className="spendings_add_active_buttons">
+                                <i className="fa fa-check-square-o"
+                                   onClick={() => {
+                                       this.addSpending();
+                                       this.toggleAdding();
+                                   }}/>
+                                <i className="fa fa-undo" onClick={this.toggleAdding}/>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div className="spendings_list">
+                    {spendings}
+                </div>
             </div>
         );
     }

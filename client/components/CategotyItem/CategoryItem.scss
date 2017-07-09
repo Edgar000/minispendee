@@ -1,0 +1,70 @@
+.category-item {
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-item_info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-item_info_name {
+  margin: 15px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 30px;
+  color: black;
+  text-decoration: none;
+}
+
+.category-item_info_chart {
+  margin: 15px;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.category-item_new-name {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  input {
+    margin: 15px;
+    border: 2px solid gainsboro;
+    border-radius: 10px;
+    width: 75%;
+    outline: none;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 25px;
+  }
+}
+
+.category-item_new-name_save {
+  margin: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.category-item_change {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-item_change_edit {
+  margin: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.category-item_change_delete {
+  margin: 15px;
+  font-size: 15px;
+  cursor: pointer;
+}
